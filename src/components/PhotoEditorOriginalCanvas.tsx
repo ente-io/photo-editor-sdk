@@ -1,17 +1,17 @@
 import * as React from 'react';
-import usePhotoEditor from '../hooks/usePhotoEditor';
+import { MutableRefObject } from 'react';
 
-const PhotoEditorOriginalCanvas = () => {
-    const { originalSizeCanvasRef } = usePhotoEditor();
-
-    return (
-        <canvas
-            ref={originalSizeCanvasRef}
-            style={{
-                display: 'none',
-            }}
-        />
-    );
-};
+const PhotoEditorOriginalCanvas = React.forwardRef<HTMLCanvasElement | null>(
+    (ref: MutableRefObject<HTMLCanvasElement | null>) => {
+        return (
+            <canvas
+                ref={ref}
+                style={{
+                    display: 'none'
+                }}
+            />
+        );
+    }
+);
 
 export default PhotoEditorOriginalCanvas;

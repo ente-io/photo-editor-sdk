@@ -1,7 +1,6 @@
-import { useContext, useEffect } from 'react';
-import usePhotoEditor from './usePhotoEditor';
+import { useEffect } from 'react';
 import applyFilters from '../lib/colours/apply';
-import PhotoEditorContext from '../components/PhotoEditorContext';
+import { usePhotoEditorContext } from '../components/PhotoEditorContext';
 import FilterValues from '../lib/interfaces/filters';
 
 interface IProps {
@@ -9,17 +8,20 @@ interface IProps {
 }
 
 const usePhotoColourAdjuster = (props: IProps) => {
-    const { canvases } = usePhotoEditor();
-
-    const { fileURL } = useContext(PhotoEditorContext);
+    const { fileURL, originalSizeCanvasRef, previewCanvasRef } =
+        usePhotoEditorContext();
 
     useEffect(() => {
+        const canvases = [
+            originalSizeCanvasRef.current,
+            previewCanvasRef.current
+        ];
         try {
             applyFilters(canvases, canvases[0], fileURL, props.values);
         } catch (e) {
             console.error(e);
         }
-    }, [props.values, canvases, fileURL]);
+    }, [props.values, fileURL, originalSizeCanvasRef, previewCanvasRef]);
 };
 
 export default usePhotoColourAdjuster;
