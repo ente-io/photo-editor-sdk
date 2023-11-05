@@ -101,6 +101,10 @@ const MyEditorComponent = () => {
 export default App;
 ```
 
+### Caveats
+
+-   Due to constraints, performing colour adjustments _after_ transforms may produce adverse effects
+
 ## License
 
 MIT © [ente-io](https://github.com/ente-io)
