@@ -13,8 +13,8 @@ const usePhotoColourAdjuster = (props: IProps) => {
 
     useEffect(() => {
         const canvases = [
-            originalSizeCanvasRef.current,
-            previewCanvasRef.current
+            previewCanvasRef.current,
+            originalSizeCanvasRef.current
         ];
         try {
             applyFilters(canvases, canvases[0], fileURL, props.values);
