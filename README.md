@@ -13,16 +13,73 @@ npm install --save @ente-io/photo-editor-sdk
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import {
+    PhotoEditorPreview,
+    usePhotoColourAdjuster,
+    usePhotoTransformer,
+    PhotoEditorProvider,
+    usePhotoEditor
+} from '@ente-io/photo-editor-sdk';
 
-import MyComponent from '@ente-io/photo-editor-sdk'
-import '@ente-io/photo-editor-sdk/dist/index.css'
+function App() {
+    const parentRef = useRef<HTMLDivElement | null>(null);
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+    const [fileURL, setFileURL] = useState<string>('/example-photo.jpg');
+
+    return (
+        <div
+            className='App'
+            ref={parentRef}
+            style={{
+                width: '100%',
+                height: '20rem'
+            }}
+        >
+            <PhotoEditorProvider
+                value={{
+                    parentElementRef: parentRef,
+                    fileURL,
+                    outputMime: 'image/jpeg'
+                }}
+            >
+                <MyEditorComponent />
+            </PhotoEditorProvider>
+        </div>
+    );
 }
+
+const MyEditorComponent = () => {
+    const transformer = usePhotoTransformer();
+
+    const [photoColourAdjusterValues, setPhotoColourAdjusterValues] = useState({
+        brightness: 100,
+        contrast: 100,
+        blur: 0,
+        saturation: 100,
+        invert: false
+    });
+
+    usePhotoColourAdjuster({
+        values: photoColourAdjusterValues
+    });
+
+    const photoEditor = usePhotoEditor();
+
+    return (
+        <>
+            <div
+                style={{
+                    width: '100%',
+                    height: '100%'
+                }}
+            >
+                <PhotoEditorPreview show={true} />
+            </div>
+        </>
+    );
+};
+
+export default App;
 ```
 
 ## License
