@@ -1,13 +1,32 @@
-# @ente-io/photo-editor-sdk
+# @ente/photo-editor-sdk
 
-> Open-source React photo editor component that&#x27;s easily extensible.
+Open-source React photo editor component that's easily extensible.
 
-[![NPM](https://img.shields.io/npm/v/@ente-io/photo-editor-sdk.svg)](https://www.npmjs.com/package/@ente-io/photo-editor-sdk) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+-   Leverages browser APIs for optimal performance
+-   Supports live previews and high-resolution exports
+-   Includes common tools like rotate, crop, filters
+-   Fully customizable styles and functionality
+-   Headless components for customized integration
+-   Free, open-source, and MIT licensed
+
+## Background
+
+### Team
+
+We're [ente](https://ente.io), a secure photo backup and sync service. Support this library by checking out one of our paid plans.
+
+### Motivation
+
+We developed our own photo editor for our web and desktop clients because existing editors did not meet our requirements for performance, scalability, and customizability. However, we realized many other developers likely face similar challenges in finding a suitable photo editing solution. Therefore, we decided to release our photo editing components as an SDK in order to help more developers implement powerful image manipulation tools without extensive research and development.
+
+## Example
+
+Check out this [blog post](https://ente.io/blog/introducing-web-desktop-photo-editor/) to see our photo editor in action.
 
 ## Install
 
 ```bash
-npm install --save @ente-io/photo-editor-sdk
+yarn add @ente-io/photo-editor-sdk
 ```
 
 ## Usage
